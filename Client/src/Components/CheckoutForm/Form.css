@@ -1,0 +1,27 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap');
+
+.checkoutForm-container .checkout-form, .checkout-form .form-control{
+    display: flex;
+    flex-direction: column;
+    margin-top: 10px;
+    font-family: 'Poppins', sans-serif;
+}
+
+.checkoutForm-container input{
+    width: 200px;
+    margin: 5px 0;
+    padding: 5px 3px;
+    border: 1px solid black;
+    outline: none;
+}
+
+.checkout-form .btn-submit{
+    background-color: black;
+    color: white;
+}
+
+.btn-submit:hover{
+    border: 1px solid black;
+    background-color: transparent;
+    color: black;
+}

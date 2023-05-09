@@ -14,6 +14,7 @@ const List = () => {
     };
 
     getMeals();
+    // eslint-disable-next-line
   }, []);
 
   return (

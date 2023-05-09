@@ -8,7 +8,12 @@ import { useState } from "react";
 
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const { cartItems } = useContext(Cartcontext);
+  const { cartItems, setIsOrdered } = useContext(Cartcontext);
+
+  const onCloseHandler = () => {
+    setIsOpen(false);
+    setIsOrdered(false);
+  };
 
   return (
     <div className="foodzy-app__header-container">
@@ -26,7 +31,7 @@ const Header = () => {
             <div className="foodzy-app__cart-badge">{cartItems.length}</div>
           )}
         </button>
-        <Modal open={isOpen} onClose={() => setIsOpen(false)}>
+        <Modal open={isOpen} onClose={onCloseHandler}>
           {cartItems.map((item) => {
             return (
               <li key={item.id}>

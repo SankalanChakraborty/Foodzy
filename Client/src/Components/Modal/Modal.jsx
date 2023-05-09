@@ -4,11 +4,11 @@ import { Fragment } from "react";
 import { createPortal } from "react-dom";
 import { useEffect, useState, useContext } from "react";
 import { Cartcontext } from "../Context/Context";
+import Form from "../CheckoutForm/Form";
 
 const Modal = (props) => {
-  const { cartItems } = useContext(Cartcontext);
+  const { cartItems, isOrdered, setIsOrdered } = useContext(Cartcontext);
   const [total, setTotal] = useState(0);
-  console.log(cartItems);
 
   useEffect(() => {
     setTotal(cartItems.reduce((acc, meal) => acc + Number(meal.price), 0));
@@ -17,6 +17,10 @@ const Modal = (props) => {
   if (!props.open) {
     return null;
   }
+
+  const placeOrderHandler = () => {
+    setIsOrdered((prevData) => (prevData = true));
+  };
 
   return createPortal(
     <Fragment>
@@ -41,12 +45,18 @@ const Modal = (props) => {
               Close
             </button>
             {cartItems.length ? (
-              <button className="btn btn__place-order">Order</button>
+              <button
+                className="btn btn__place-order"
+                onClick={placeOrderHandler}
+              >
+                Order
+              </button>
             ) : (
               ""
             )}
           </div>
         </div>
+        {isOrdered ? <Form /> : ""}
       </div>
     </Fragment>,
     document.getElementById("portal")

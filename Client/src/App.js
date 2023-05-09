@@ -8,6 +8,7 @@ import { Cartcontext } from "./Components/Context/Context";
 function App() {
   const [cartItems, setCartItems] = useState([]);
   const [meals, setMeals] = useState([]);
+  const [isOrdered, setIsOrdered] = useState(false);
 
   useEffect(() => {
     const getCartItems = async () => {
@@ -23,7 +24,14 @@ function App() {
   return (
     <div className="app-container">
       <Cartcontext.Provider
-        value={{ cartItems, setCartItems, meals, setMeals }}
+        value={{
+          cartItems,
+          setCartItems,
+          meals,
+          setMeals,
+          isOrdered,
+          setIsOrdered,
+        }}
       >
         <Header />
         <Info />
