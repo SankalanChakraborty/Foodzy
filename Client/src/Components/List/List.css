@@ -1,0 +1,65 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap');
+
+.foodzy-app__food-list{
+    width: 700px;
+    background-color: white;
+    box-shadow: 2px 2px 4px rgb(74, 74, 74);
+    border-radius: 8px;
+    padding: 25px;
+    margin: 15px 0;
+}
+
+
+.foodzy-app__food-list li{
+    display: flex;
+    justify-content: space-between;
+    list-style: none;
+    padding: 10px;
+}
+
+.foodzy-app__food-list li h3, p, span, button{
+    font-family: 'Poppins', sans-serif;
+}
+
+.foodzy-app__food-list li p{
+    font-weight: 300;
+    font-style: italic;
+}
+
+.foodzy-app__food-list li span{
+    color: #CD5C5C;
+}
+
+.foodzy-app__food-list li:not(:last-child){
+    border-bottom: 1px solid #CD5C5C;
+}
+
+.meal_action-buttons{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.meal_action-buttons button{
+    padding: 5px;
+    width: 80px;
+    border-radius: 15px;
+    border: 0;
+    background-color: #CD5C5C;
+    outline: none;
+    color: white;
+    font-weight: 300;
+    cursor: pointer;
+    box-shadow: 2px 2px 3px #542b2b;
+    transition: all 0.3s ease-in-out;
+}
+
+.meal_action-buttons button:hover{
+    background-color: #eb8686;
+}
+
+.meal_action-buttons i{
+    margin: 0 3px;
+    color: green
+}

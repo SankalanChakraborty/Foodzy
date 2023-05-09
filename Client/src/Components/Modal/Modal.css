@@ -1,0 +1,95 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap');
+
+.foodzy-app__cart-modal{
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    width: 500px;
+    max-height: 350px;
+    border-radius: 8px;
+    padding: 20px;
+    overflow-y: auto;
+}
+
+::-webkit-scrollbar-track {
+    background-color: #F5F5F5;
+  }
+  
+::-webkit-scrollbar {
+    width: 5px;
+    background-color: #F5F5F5;
+  }
+  
+::-webkit-scrollbar-thumb {
+    background-color: #323030;
+}
+
+
+
+.foodzy-app__cart-overlay{
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: rgba(0,0,0,0.7);
+}
+
+.btn{
+    padding: 5px;
+    margin: 10px auto;
+    width: 100px;
+    background: transparent;
+    outline: none;
+    border: none;
+    border-radius: 15px;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 300;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out; 
+}
+
+.btn__close-modal{
+    color: black;
+    border: 1px solid black;
+    
+}
+
+.btn__close-modal:hover{
+    background-color: black;
+    color: white;
+    
+}
+
+.btn__place-order{
+    color: white;
+    background-color: green;
+}
+
+.btn__place-order:hover{
+    color: green;
+    border: 1px solid green;
+    background: transparent;
+}
+
+.foodzy-app__empty-cart{
+    font-family: 'Poppins', sans-serif;
+    text-align: center;
+}
+
+.foodzy-app__modal-buttons, .foodzy-app__cart-total{
+    display: flex;
+    justify-content: space-around;
+
+}
+
+.foodzy-app__cart-total{
+    justify-content: space-between;
+}
+
+.foodzy-app__cart-total span{
+    padding: 5px;
+    margin: 5px 5px;
+}

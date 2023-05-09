@@ -1,0 +1,75 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap');
+
+.foodzy-app__header-container, .foodzy-app__banner, .foodzy-app__cart-button, .foodzy-app__cart-badge{
+    display: flex;
+}
+
+.foodzy-app__banner{
+    justify-content: space-between;
+    align-items: center;
+    z-index: 999;
+    background-color: #CD5C5C;
+    padding: 10px;
+}
+
+.foodzy-app__banner h1{
+    color: white;
+    font-family: 'Poppins', sans-serif;
+}
+
+.foodzy-app__header-container{
+    width: 100%;
+    flex-direction: column;
+    overflow-x: hidden;
+}
+
+.foodzy-app__cart-button{
+    justify-content: space-evenly;
+    align-items: center;
+    width: 200px;
+    padding: 10px;
+    margin: 0 50px;
+    border: none;
+    outline: none;
+    border-radius: 25px;
+    cursor: pointer;
+    background-color: rgba(250,128,114, 0.6);
+    color: white;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 300;
+    box-shadow: 2px 2px 5px rgba(178, 89, 80, 0.6);
+    transition: all 0.3s ease-in-out;
+}
+
+.foodzy-app__cart-button:hover{
+    background-color: rgba(0,0,0,0.4);
+}
+
+.foodzy-app__header-container img{
+    width: 110%;
+    height: 40vh;
+    object-fit: cover;
+    transform: rotateZ(-5deg) translateY(-4rem) translateX(-1rem)
+}
+
+.foodzy-app__cart-badge{
+    justify-content: center;
+    align-items: center;
+    width: 25px;
+    height: 25px;
+    padding: 5px;
+    background-color: black;
+    box-shadow: 2px 2px 2px rgb(110, 68, 68);
+    border-radius: 50%;
+    text-align: center;
+}
+
+li{
+    list-style: none;
+}
+
+
+
+
+
