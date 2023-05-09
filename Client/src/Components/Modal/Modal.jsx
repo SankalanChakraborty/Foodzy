@@ -7,7 +7,8 @@ import { Cartcontext } from "../Context/Context";
 import Form from "../CheckoutForm/Form";
 
 const Modal = (props) => {
-  const { cartItems, isOrdered, setIsOrdered } = useContext(Cartcontext);
+  const { cartItems, orderPlaced, isOrdering, setIsOrdering } =
+    useContext(Cartcontext);
   const [total, setTotal] = useState(0);
 
   useEffect(() => {
@@ -19,20 +20,24 @@ const Modal = (props) => {
   }
 
   const placeOrderHandler = () => {
-    setIsOrdered((prevData) => (prevData = true));
+    setIsOrdering((prevData) => (prevData = true));
   };
 
   return createPortal(
     <Fragment>
       <div className="foodzy-app__cart-overlay"></div>
       <div className="foodzy-app__cart-modal">
-        {cartItems.length ? (
-          props.children
+        {cartItems.length && !orderPlaced ? props.children : ""}
+        {orderPlaced ? (
+          <>
+            <h2 className="foodzy-app__order-placed">Your order is placed</h2>
+            <i className="fa-solid fa-pot-food" />
+          </>
         ) : (
-          <h2 className="foodzy-app__empty-cart">Your cart is empty</h2>
-        )}{" "}
+          ""
+        )}
         <div>
-          {cartItems.length ? (
+          {cartItems.length && !orderPlaced ? (
             <div className="foodzy-app__cart-total">
               <span>Total:</span>
               <span>${total.toFixed(2)}</span>
@@ -40,11 +45,12 @@ const Modal = (props) => {
           ) : (
             ""
           )}
+
           <div className="foodzy-app__modal-buttons">
             <button className="btn btn__close-modal" onClick={props.onClose}>
               Close
             </button>
-            {cartItems.length ? (
+            {cartItems.length && !orderPlaced ? (
               <button
                 className="btn btn__place-order"
                 onClick={placeOrderHandler}
@@ -56,7 +62,7 @@ const Modal = (props) => {
             )}
           </div>
         </div>
-        {isOrdered ? <Form /> : ""}
+        {isOrdering ? <Form /> : ""}
       </div>
     </Fragment>,
     document.getElementById("portal")

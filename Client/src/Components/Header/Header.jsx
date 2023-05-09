@@ -8,11 +8,11 @@ import { useState } from "react";
 
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const { cartItems, setIsOrdered } = useContext(Cartcontext);
+  const { cartItems, setIsOrdering } = useContext(Cartcontext);
 
   const onCloseHandler = () => {
     setIsOpen(false);
-    setIsOrdered(false);
+    setIsOrdering(false);
   };
 
   return (

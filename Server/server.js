@@ -58,6 +58,16 @@ app.delete("/items/:id", async (req, res) => {
   }
 });
 
+//Remove all meals from the cart
+app.delete("/items", async (req, res) => {
+  try {
+    const clearCart = await pool.query("DELETE FROM FOOD_CART");
+    res.json("Cart cleared");
+  } catch (err) {
+    console.error(err);
+  }
+});
+
 app.listen(PORT, () => {
   console.log(`Server started on port ${PORT}...`);
 });

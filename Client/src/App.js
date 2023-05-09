@@ -8,7 +8,8 @@ import { Cartcontext } from "./Components/Context/Context";
 function App() {
   const [cartItems, setCartItems] = useState([]);
   const [meals, setMeals] = useState([]);
-  const [isOrdered, setIsOrdered] = useState(false);
+  const [isOrdering, setIsOrdering] = useState(false);
+  const [orderPlaced, setOrderPlaced] = useState(false);
 
   useEffect(() => {
     const getCartItems = async () => {
@@ -29,8 +30,10 @@ function App() {
           setCartItems,
           meals,
           setMeals,
-          isOrdered,
-          setIsOrdered,
+          isOrdering,
+          setIsOrdering,
+          orderPlaced,
+          setOrderPlaced,
         }}
       >
         <Header />

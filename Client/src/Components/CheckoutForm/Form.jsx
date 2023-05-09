@@ -1,7 +1,11 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import "./Form.css";
+import { Cartcontext } from "../Context/Context";
 
 const Form = () => {
+  const { setOrderPlaced, setIsOrdering, setCartItems } =
+    useContext(Cartcontext);
+
   const [fullName, setFullName] = useState("");
   const [email, setEmail] = useState("");
   const [streetName, setstreetName] = useState("");
@@ -24,20 +28,44 @@ const Form = () => {
     setcity((prevData) => (prevData = e.target.value));
   };
 
+  const submitHandler = async (e) => {
+    e.preventDefault();
+    setFullName("");
+    setEmail("");
+    setstreetName("");
+    setzipcode("");
+    setcity("");
+    const clearCart = await fetch("http://localhost:5000/items", {
+      method: "DELETE",
+    });
+    const data = await clearCart.json();
+    setCartItems([]);
+    console.log(data);
+    console.log("Order Placed");
+    setOrderPlaced(true);
+    setIsOrdering(false);
+  };
+
   return (
     <div className="checkoutForm-container">
-      <form action="" className="checkout-form">
+      <form action="" className="checkout-form" onSubmit={submitHandler}>
         <div className="form-control">
           <label htmlFor="full-name">Your Name</label>
           <input
             type="text"
             value={fullName}
             onChange={fullNameChangeHandler}
+            required
           />
         </div>
         <div className="form-control">
           <label htmlFor="email">Email</label>
-          <input type="email" value={email} onChange={emailChangeHandler} />
+          <input
+            type="email"
+            value={email}
+            onChange={emailChangeHandler}
+            required
+          />
         </div>
         <div className="form-control">
           <label htmlFor="street-name">Street Name</label>
@@ -46,6 +74,7 @@ const Form = () => {
             id="street-name"
             value={streetName}
             onChange={streetNameChangeHandler}
+            required
           />
         </div>
         <div className="form-control">
@@ -55,6 +84,7 @@ const Form = () => {
             id="zip-code"
             value={zipcode}
             onChange={zipcodeChangeHandler}
+            required
           />
         </div>
         <div className="form-control">
@@ -64,6 +94,7 @@ const Form = () => {
             id="city"
             value={city}
             onChange={cityChangeHandler}
+            required
           />
         </div>
         <button className="btn btn-submit" type="submit">
