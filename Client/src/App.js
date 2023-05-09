@@ -7,6 +7,8 @@ import { Cartcontext } from "./Components/Context/Context";
 
 function App() {
   const [cartItems, setCartItems] = useState([]);
+  const [meals, setMeals] = useState([]);
+
   useEffect(() => {
     const getCartItems = async () => {
       const getCartMeals = await fetch("http://localhost:5000/cart", {
@@ -20,7 +22,9 @@ function App() {
 
   return (
     <div className="app-container">
-      <Cartcontext.Provider value={{ cartItems, setCartItems }}>
+      <Cartcontext.Provider
+        value={{ cartItems, setCartItems, meals, setMeals }}
+      >
         <Header />
         <Info />
         <List />
