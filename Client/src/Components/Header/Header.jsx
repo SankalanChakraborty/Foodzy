@@ -7,7 +7,7 @@ import "./Header.css";
 
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const { cartItems, setIsOrdering } = useContext(Cartcontext);
+  const { cartItems, setIsOrdering, getUpdatedCart } = useContext(Cartcontext);
 
   const [cartLength, setCartLength] = useState(0);
 
@@ -18,7 +18,8 @@ const Header = () => {
 
   useEffect(() => {
     setCartLength(cartItems.reduce((acc, meal) => acc + meal.quantity, 0));
-  }, [cartItems]);
+    getUpdatedCart();
+  }, [getUpdatedCart, cartItems]);
 
   return (
     <div className="foodzy-app__header-container">

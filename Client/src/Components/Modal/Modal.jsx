@@ -12,7 +12,9 @@ const Modal = (props) => {
   const [total, setTotal] = useState(0);
 
   useEffect(() => {
-    setTotal(cartItems.reduce((acc, meal) => acc + Number(meal.price), 0));
+    setTotal(
+      cartItems.reduce((acc, meal) => acc + meal.price * meal.quantity, 0)
+    );
   }, [cartItems]);
 
   if (!props.open) {
