@@ -33,22 +33,41 @@
     font-style: italic;
 }
 
-.btn-remove__cart-meal{
+.foodzy-app__cart-item-container .btn{
     color: white;
     padding: 5px;
-    width: 100px;
-    background: red;
+    margin: 0 5px;
+    width: 50px;
     outline: none;
     border: none;
     border-radius: 15px;
     font-family: 'Poppins', sans-serif;
-    font-weight: 300;
+    font-weight: 600;
     cursor: pointer;
     transition: all 0.3s ease-in-out;
+}
+
+.foodzy-app__cart-item-container .count-cart-item{
+    margin: 0 5px;
+}
+
+.btn-remove__cart-meal{
+    background: red;
+    
+}
+
+.btn-add__cart-meal{
+    background-color: green;
 }
 
 .btn-remove__cart-meal:hover{
     color: black;
     background: transparent;
     border: 1px solid red;
+}
+
+.btn-add__cart-meal:hover{
+    color: black;
+    background: transparent;
+    border: 1px solid green;
 }

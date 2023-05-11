@@ -24,9 +24,12 @@ const Modal = (props) => {
   };
 
   return createPortal(
-    <Fragment>
+    <>
       <div className="foodzy-app__cart-overlay"></div>
       <div className="foodzy-app__cart-modal">
+        {!cartItems.length && !orderPlaced && (
+          <h2 className="foodzy-app__empty-cart">Cart is empty</h2>
+        )}
         {cartItems.length && !orderPlaced ? props.children : ""}
         {orderPlaced ? (
           <>
@@ -64,7 +67,7 @@ const Modal = (props) => {
         </div>
         {isOrdering ? <Form /> : ""}
       </div>
-    </Fragment>,
+    </>,
     document.getElementById("portal")
   );
 };

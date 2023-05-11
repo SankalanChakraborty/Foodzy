@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import "./App.css";
 import Header from "./Components/Header/Header";
 import Info from "./Components/Info/Info";
@@ -11,16 +11,13 @@ function App() {
   const [isOrdering, setIsOrdering] = useState(false);
   const [orderPlaced, setOrderPlaced] = useState(false);
 
-  useEffect(() => {
-    const getCartItems = async () => {
-      const getCartMeals = await fetch("http://localhost:5000/cart", {
-        method: "GET",
-      });
-      const data = await getCartMeals.json();
-      setCartItems(data);
-    };
-    getCartItems();
-  }, [setCartItems]);
+  const getUpdatedCart = async () => {
+    const updatedCartDetails = await fetch("http://localhost:5000/cart", {
+      method: "GET",
+    });
+    const data = await updatedCartDetails.json();
+    setCartItems(data);
+  };
 
   return (
     <div className="app-container">
@@ -34,6 +31,7 @@ function App() {
           setIsOrdering,
           orderPlaced,
           setOrderPlaced,
+          getUpdatedCart,
         }}
       >
         <Header />

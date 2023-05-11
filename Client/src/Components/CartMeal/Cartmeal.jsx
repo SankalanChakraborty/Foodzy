@@ -3,7 +3,7 @@ import { useContext } from "react";
 import { Cartcontext } from "../Context/Context";
 
 const Cartmeal = ({ item }) => {
-  const { cartItems, setCartItems } = useContext(Cartcontext);
+  const { getUpdatedCart } = useContext(Cartcontext);
 
   return (
     <div className="foodzy-app__cart-item-container">
@@ -13,7 +13,7 @@ const Cartmeal = ({ item }) => {
         <span>${item.price}</span>
       </div>
       <button
-        className="btn-remove__cart-meal"
+        className="btn btn-remove__cart-meal"
         onClick={async () => {
           const deleteFoodItem = await fetch(
             `http://localhost:5000/items/${item.id}`,
@@ -22,11 +22,27 @@ const Cartmeal = ({ item }) => {
             }
           );
           const response = await deleteFoodItem.json();
-          setCartItems(cartItems.filter((meal) => meal.id !== item.id));
           console.log(response);
+          getUpdatedCart();
         }}
       >
-        Remove
+        -
+      </button>
+      <span className="count-cart-item">{item.quantity}</span>
+      <button
+        className="btn btn-add__cart-meal"
+        onClick={async () => {
+          const response = await fetch("http://localhost:5000", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(item),
+          });
+          const backendResponse = await response.json();
+          console.log(backendResponse);
+          getUpdatedCart();
+        }}
+      >
+        +
       </button>
     </div>
   );
